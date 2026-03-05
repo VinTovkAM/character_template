@@ -2,12 +2,6 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 import random
 import os
 
-env = Environment(
-    loader=FileSystemLoader('.'),
-    autoescape=select_autoescape(['html'])
-)
-template = env.get_template('template.html')
-
 
 CLASSES_BASE = {
         'Охотник': {
@@ -61,6 +55,12 @@ def main():
     folder = 'characters'
     if not os.path.exists(folder):
         os.makedirs(folder)
+
+    env = Environment(
+        loader=FileSystemLoader('.'),
+        autoescape=select_autoescape(['html'])
+    )
+    template = env.get_template('template.html')
 
     character_class_list = ['Охотник', 'Ассасин', 'Бард', 'Воин', 'Маг'] 
     race_list = ['Человек', 'Орк', 'Эльф', 'Дварф']
